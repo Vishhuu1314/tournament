@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>BGMI Tournament Registration</title>
+</head>
+<body>
+
+<h2>BGMI Tournament Registration</h2>
+
+<form id="tournamentForm">
+    <label>Tournament Name:</label><br>
+    <input type="text" id="tournamentName" required><br><br>
+
+    <label>Game Name:</label><br>
+    <input type="text" id="gameName" value="BGMI" required><br><br>
+
+    <label>Entry Fee:</label><br>
+    <input type="number" id="entryFee" required><br><br>
+
+    <label>Max Players:</label><br>
+    <input type="number" id="maxPlayers" required><br><br>
+
+    <button type="submit">Register Tournament</button>
+</form>
+
+<p id="result"></p>
+
+<h3>All Tournaments</h3>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Game</th>
+            <th>Fee</th>
+            <th>Players</th>
+        </tr>
+    </thead>
+    <tbody id="tournamentTable"></tbody>
+</table>
+
+<script>
+document.getElementById("tournamentForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const data = {
+        tournamentName: tournamentName.value,
+        gameName: gameName.value,
+        entryFee: entryFee.value,
+        maxPlayers: maxPlayers.value
+    };
+
+    fetch("http://localhost:8081/api/tournaments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(json => {
+        result.innerText = "Tournament Registered: " + json.tournamentName;
+        loadTournaments(); // refresh table
+    });
+});
+
+function loadTournaments() {
+    fetch("http://localhost:8081/api/tournaments")
+        .then(res => res.json())
+        .then(data => {
+            tournamentTable.innerHTML = "";
+            data.forEach(t => {
+                tournamentTable.innerHTML += `
+                    <tr>
+                        <td>${t.id}</td>
+                        <td>${t.tournamentName}</td>
+                        <td>${t.gameName}</td>
+                        <td>${t.entryFee}</td>
+                        <td>${t.maxPlayers}</td>
+                    </tr>`;
+            });
+        });
+}
+
+loadTournaments();
+</script>
+
+</body>
+</html>
