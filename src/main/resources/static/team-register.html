@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BGMI Team Registration</title>
+    <link rel="stylesheet" href="team-register.css">
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="page-center">
+    <div class="card">
+        <img src="wdbz-logo.png" class="logo">
+
+        <h1>TEAM REGISTRATION</h1>
+        <p class="subtitle">BGMI Tournament</p>
+
+        <input id="teamName" placeholder="Team Name">
+        <input id="leaderName" placeholder="Leader Name">
+
+        <input id="bgmiId" placeholder="Leader BGMI ID">
+        <span class="error" id="bgmiError"></span>
+
+        <input id="age" placeholder="Age (18+)">
+        <span class="error" id="ageError"></span>
+
+        <input id="whatsapp" placeholder="WhatsApp Number">
+        <span class="error" id="waError"></span>
+
+        <button id="submitBtn" onclick="register()">CREATE TEAM</button>
+
+        <p class="note">
+            Only team leader should register.<br>
+            Team members will be added next.
+        </p>
+    </div>
+</div>
+
+<!-- ✅ SUCCESS POPUP -->
+<div id="successPopup" class="popup-overlay" style="display:none;">
+    <div class="popup-box">
+        <div class="tick">✔</div>
+        <h2>Team Registered Successfully</h2>
+        <div class="loader"></div>
+        <p class="redirect-text">Redirecting...</p>
+    </div>
+</div>
+
+<script src="team-register.js"></script>
+</body>
+</html>

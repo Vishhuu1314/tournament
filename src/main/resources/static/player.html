@@ -1,51 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>WDBZ Player Registration</title>
+    <meta charset="UTF-8">
+    <title>Team Registration | BGMI</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<div class="container">
+<body class="bgmi-page">
 
-    <!-- LEFT IMAGE SECTION -->
-    <div class="left-panel"></div>
+    <!-- LEFT BG IMAGE -->
+    <div class="bg-left"></div>
 
-    <!-- RIGHT FORM SECTION -->
-    <div class="right-panel">
-      <div class="logo-wrap">
-  <img src="/wdbz-logo.png" class="logo" alt="WDBZ Logo">
-</div>
-  
+    <!-- RIGHT FORM -->
+    <div class="form-right">
 
-        <h2>Player Registration</h2>
+        <div class="reg-card">
 
-        <input type="text" id="fullName" placeholder="Full Name">
-        <input type="text" id="ign" placeholder="IGN">
-        <input type="text" id="bgmiId" placeholder="BGMI ID">
-        <input type="email" id="email" placeholder="Email">
-        <input type="text" id="mobile" placeholder="Mobile">
-        <input type="number" id="age" placeholder="Age">
-        <input type="text" id="state" placeholder="State">
+            <!-- LOGO -->
+            <img src="wdbz-logo.png" class="logo" alt="WDBZ Logo">
 
-        <select id="deviceType">
-            <option>Android</option>
-            <option>iOS</option>
-        </select>
+            <h1>TEAM REGISTRATION</h1>
+            <p class="subtitle">BGMI Squad Tournament • 4 Players</p>
 
-        <div class="checkbox-group">
-    <input type="checkbox" id="rules">
-    <label for="rules">I agree to rules</label>
-</div>
+            <input type="text" placeholder="Team Name">
+            <input type="text" placeholder="Leader Name">
+            <input type="text" placeholder="Leader BGMI ID">
+            <input type="text" placeholder="WhatsApp Number">
 
+            <button>CREATE TEAM →</button>
 
-        <button onclick="registerPlayer()">Register</button>
+            <p class="note">
+                Only team leader should register.<br>
+                Team members will be added next.
+            </p>
 
-        <p id="result"></p>
+        </div>
+
     </div>
 
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>

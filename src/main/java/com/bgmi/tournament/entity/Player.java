@@ -10,59 +10,29 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String fullName;
-    private String ign;
-
-    @Column(unique = true, nullable = false)
+    private String teamName;
+    private String leaderName;
     private String bgmiId;
 
-    private String email;
-    private String mobile;
-    private Integer age;
-    private String state;
-    private String deviceType;
+    private Integer age;   // ⚠️ Integer, NOT int
+    private String whatsappNumber;
 
-    private boolean agreedToRules;
+    public Long getId() { return id; }
 
-    @ManyToOne
-    @JoinColumn(name = "tournament_id")
-    private Tournament tournament;
+    public String getTeamName() { return teamName; }
+    public void setTeamName(String teamName) { this.teamName = teamName; }
 
-    // ===== getters & setters =====
+    public String getLeaderName() { return leaderName; }
+    public void setLeaderName(String leaderName) { this.leaderName = leaderName; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getBgmiId() { return bgmiId; }
+    public void setBgmiId(String bgmiId) { this.bgmiId = bgmiId; }
 
-    public String getFullName() {
-        return fullName;
-    }
+    public Integer getAge() { return age; }
+    public void setAge(Integer age) { this.age = age; }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getIgn() {
-        return ign;
-    }
-
-    public void setIgn(String ign) {
-        this.ign = ign;
-    }
-
-    public String getBgmiId() {
-        return bgmiId;
-    }
-
-    public void setBgmiId(String bgmiId) {
-        this.bgmiId = bgmiId;
-    }
-
-    public Tournament getTournament() {
-        return tournament;
-    }
-
-    public void setTournament(Tournament tournament) {
-        this.tournament = tournament;
+    public String getWhatsappNumber() { return whatsappNumber; }
+    public void setWhatsappNumber(String whatsappNumber) {
+        this.whatsappNumber = whatsappNumber;
     }
 }

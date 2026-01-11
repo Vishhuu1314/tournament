@@ -1,89 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>BGMI Team Registration</title>
     <link rel="stylesheet" href="style.css">
-    <title>BGMI Tournament Registration</title>
 </head>
+
 <body>
 
-<h2>BGMI Tournament Registration</h2>
+<div class="page">
 
-<form id="tournamentForm">
-    <label>Tournament Name:</label><br>
-    <input type="text" id="tournamentName" required><br><br>
+    <!-- LEFT IMAGE SIDE -->
+    <div class="left-image"></div>
 
-    <label>Game Name:</label><br>
-    <input type="text" id="gameName" value="BGMI" required><br><br>
+    <!-- RIGHT REGISTRATION CARD -->
+    <div class="right-panel">
+        <div class="reg-card">
 
-    <label>Entry Fee:</label><br>
-    <input type="number" id="entryFee" required><br><br>
+            <img src="wdbz-logo.png" class="logo" alt="WDBZ">
 
-    <label>Max Players:</label><br>
-    <input type="number" id="maxPlayers" required><br><br>
+            <h1>TEAM REGISTRATION</h1>
+            <p class="subtitle">BGMI Squad Tournament • 4 Players</p>
 
-    <button type="submit">Register Tournament</button>
-</form>
+            <input type="text" placeholder="Team Name">
+            <input type="text" placeholder="Leader Name">
+            <input type="text" placeholder="Leader BGMI ID">
+            <input type="text" placeholder="WhatsApp Number">
 
-<p id="result"></p>
+            <button>CREATE TEAM →</button>
 
-<h3>All Tournaments</h3>
+            <p class="note">
+                Only team leader should register.<br>
+                Team members will be added next.
+            </p>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Game</th>
-            <th>Fee</th>
-            <th>Players</th>
-        </tr>
-    </thead>
-    <tbody id="tournamentTable"></tbody>
-</table>
+        </div>
+    </div>
 
-<script>
-document.getElementById("tournamentForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const data = {
-        tournamentName: tournamentName.value,
-        gameName: gameName.value,
-        entryFee: entryFee.value,
-        maxPlayers: maxPlayers.value
-    };
-
-    fetch("http://localhost:8081/api/tournaments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(json => {
-        result.innerText = "Tournament Registered: " + json.tournamentName;
-        loadTournaments(); // refresh table
-    });
-});
-
-function loadTournaments() {
-    fetch("http://localhost:8081/api/tournaments")
-        .then(res => res.json())
-        .then(data => {
-            tournamentTable.innerHTML = "";
-            data.forEach(t => {
-                tournamentTable.innerHTML += `
-                    <tr>
-                        <td>${t.id}</td>
-                        <td>${t.tournamentName}</td>
-                        <td>${t.gameName}</td>
-                        <td>${t.entryFee}</td>
-                        <td>${t.maxPlayers}</td>
-                    </tr>`;
-            });
-        });
-}
-
-loadTournaments();
-</script>
+</div>
 
 </body>
 </html>
